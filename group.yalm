@@ -1,0 +1,11 @@
+family:
+- device_tracker.david
+- device_tracker.eli
+weather:
+- sensor.yr_condition
+- sensor.yr_humidity
+- sensor.yr_symbol
+- sensor.yr_temperature
+- sensor.yr_wind_speed
+- sun.sun
+

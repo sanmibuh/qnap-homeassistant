@@ -1,0 +1,19 @@
+- alias: We are at home
+  trigger:
+    platform: state
+    entity_id: group.family
+    state: 'home'
+  action:
+    # alternative speed on (low speed)
+    service: switch.turn_on
+    entity_id: switch.transmission
+
+- alias: We are not at home
+  trigger:
+    platform: state
+    entity_id: group.family
+    state: 'not_home'
+  action:
+    # alternative speed off (hi speed)
+    service: switch.turn_off
+    entity_id: switch.transmission

@@ -1,0 +1,80 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret home_lat
+  longitude: !secret home_long
+  # Impacts weather/sunrise data
+  elevation: !secret home_elev
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/Madrid
+
+# Show links to resources in log and frontend
+#introduction:
+
+# Enables the frontend
+frontend:
+
+http:
+  # Uncomment this to add a password (recommended!)
+  api_password: !secret front_end_pw
+
+# Checks for available updates
+updater:
+
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time.
+history:
+
+# View all events in a logbook
+logbook:
+
+# Track the sun
+sun:
+
+# Weather Prediction
+sensor:
+  platform: yr
+  monitored_conditions:
+    - temperature
+    - symbol
+    - precipitation
+    - windSpeed
+    - humidity
+
+media_player:
+  platform: pioneer
+  host: 10.0.0.5
+  name: A/V Pioneer
+
+device_tracker:
+  platform: ddwrt
+  host: !secret ddwrt_host
+  username: !secret ddwrt_username
+  password: !secret ddwrt_pw
+  # If new discovered devices are tracked by default (default: yes)
+  track_new_devices: yes
+  # Seconds between each scan for new devices (default: 12)
+  interval_seconds: 12
+  # Seconds to wait till marking someone as not home after not being seen
+  # (default: 180)
+  consider_home: 180
+
+switch:
+  platform: transmission
+  host: !secret transmission_host
+  port: 9091
+  name: Transmission
+  username: !secret transmission_user
+  password: !secret transmission_pw
+
+group: !include group.yalm
+
+automation: !include automation.yaml
