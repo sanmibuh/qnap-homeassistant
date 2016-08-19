@@ -1,4 +1,7 @@
-
+*
 .idea/
+conf/.HA_VERSION
+conf/deps/
+conf/*.log
 conf/secrets.yaml
 *.iml
