@@ -1,0 +1,16 @@
+sun.sun:
+  friendly_name: Sol
+sensor.yr_symbol:
+  friendly_name: Estado
+sensor.yr_temperature:
+  friendly_name: Temperatura
+sensor.yr_condition:
+  friendly_name: Lluvia
+sensor.yr_humidity:
+  friendly_name: Humedad
+sensor.yr_wind_speed:
+  friendly_name: Viento
+zone.school:
+  friendly_name: Colegio
+zone.work_d:
+  friendly_name: Trabajo David

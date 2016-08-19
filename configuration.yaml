@@ -10,6 +10,19 @@ homeassistant:
   unit_system: metric
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: Europe/Madrid
+  # customization
+  customize: !include customize.yaml
+
+zone:
+  name: school
+  latitude: !secret school_lat
+  longitude: !secret school_long
+  icon: mdi:school
+zone 2:
+  name: work_d
+  latitude: !secret work_d_lat
+  longitude: !secret work_d_long
+  icon: mdi:worker
 
 # Show links to resources in log and frontend
 #introduction:
@@ -62,7 +75,7 @@ device_tracker:
   # If new discovered devices are tracked by default (default: yes)
   track_new_devices: yes
   # Seconds between each scan for new devices (default: 12)
-  interval_seconds: 12
+  interval_seconds: 30
   # Seconds to wait till marking someone as not home after not being seen
   # (default: 180)
   consider_home: 180

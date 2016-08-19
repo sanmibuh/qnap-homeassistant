@@ -36,7 +36,7 @@ dell:
 
 chromecast:
   name: Chromecast Salon
-  mac: chromecast_mac
+  mac: !secret chromecast_mac
   picture: 
   track: no
   hide_if_away: no

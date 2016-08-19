@@ -1,11 +1,28 @@
-family:
-- device_tracker.david
-- device_tracker.eli
-weather:
-- sensor.yr_condition
-- sensor.yr_humidity
-- sensor.yr_symbol
-- sensor.yr_temperature
-- sensor.yr_wind_speed
-- sun.sun
+default_view:
+  name: Inicio
+  view: yes
+  entities:
+    - group.family
+    - group.weather
 
+devicestab:
+  name: Dispositivos
+  view: yes
+  entities:
+    - media_player.pioneer
+    - switch.transmission
+
+family:
+  name: Familia
+  entities:
+    - device_tracker.david
+    - device_tracker.eli
+weather:
+  name: Familia
+  entities:
+    - sun.sun
+    - sensor.yr_symbol
+    - sensor.yr_temperature
+    - sensor.yr_condition
+    - sensor.yr_humidity
+    - sensor.yr_wind_speed
