@@ -67,18 +67,26 @@ media_player:
   host: 10.0.0.5
   name: A/V Pioneer
 
+mqtt:
+  broker: !secret mqtt_server
+  port: !secret mqtt_port
+  username: !secret mqtt_user
+  password: !secret mqtt_pw
+
 device_tracker:
-  platform: ddwrt
-  host: !secret ddwrt_host
-  username: !secret ddwrt_username
-  password: !secret ddwrt_pw
-  # If new discovered devices are tracked by default (default: yes)
-  track_new_devices: yes
-  # Seconds between each scan for new devices (default: 12)
-  interval_seconds: 30
-  # Seconds to wait till marking someone as not home after not being seen
-  # (default: 180)
-  consider_home: 180
+  - platform: ddwrt
+    host: !secret ddwrt_host
+    username: !secret ddwrt_username
+    password: !secret ddwrt_pw
+    # If new discovered devices are tracked by default (default: yes)
+    track_new_devices: yes
+    # Seconds between each scan for new devices (default: 12)
+    interval_seconds: 30
+    # Seconds to wait till marking someone as not home after not being seen
+    # (default: 180)
+    consider_home: 180
+  - platform: owntracks
+    max_gps_accuracy: 200
 
 switch:
   platform: transmission

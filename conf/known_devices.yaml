@@ -1,12 +1,12 @@
 
-david:
+sanmi_sonyz3:
   name: David
   mac: !secret david_mac
   picture: !secret david_picture
   track: yes
   hide_if_away: no
 
-eli:
+eli_sonyz3:
   name: Eli
   mac: !secret eli_mac
   picture: !secret eli_picture

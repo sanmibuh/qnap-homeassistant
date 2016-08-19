@@ -15,10 +15,10 @@ devicestab:
 family:
   name: Familia
   entities:
-    - device_tracker.david
-    - device_tracker.eli
+    - device_tracker.sanmi_sonyz3
+    - device_tracker.eli_sonyz3
 weather:
-  name: Familia
+  name: Clima
   entities:
     - sun.sun
     - sensor.yr_symbol
