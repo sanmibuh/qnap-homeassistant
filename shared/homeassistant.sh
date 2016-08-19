@@ -10,8 +10,9 @@ PYTHON="$PYTHON_DIR/python3/bin/python3"
 PIP3="$PYTHON_DIR/python3/bin/pip3"
 HASS="$PYTHON_DIR/python3/bin/hass"
 PID_FILE="/tmp/home-assistant.pid"
-FLAGS="-v --config $QPKG_ROOT --pid-file $PID_FILE --daemon"
-REDIRECT="> $QPKG_ROOT/home-assistant.log 2>&1"
+FLAGS="-v --config $QPKG_ROOT/conf --pid-file $PID_FILE --daemon"
+LOG_FILE="$QPKG_ROOT/conf/home-assistant.log"
+REDIRECT="> $LOG_FILE 2>&1"
 
 start_daemon () {
     /bin/sh -c "$PYTHON $HASS $FLAGS $REDIRECT;"
