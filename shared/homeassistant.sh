@@ -7,6 +7,7 @@ APACHE_ROOT=/share/`/sbin/getcfg SHARE_DEF defWeb -d Qweb -f /etc/config/def_sha
 # Others
 PYTHON_DIR=`/sbin/getcfg Python3 Install_Path -f ${CONF}`
 PYTHON="$PYTHON_DIR/python3/bin/python3"
+PIP3="$PYTHON_DIR/python3/bin/pip3"
 HASS="$PYTHON_DIR/python3/bin/hass"
 PID_FILE="/tmp/home-assistant.pid"
 FLAGS="-v --config $QPKG_ROOT --pid-file $PID_FILE --daemon"
@@ -14,6 +15,10 @@ REDIRECT="> $QPKG_ROOT/home-assistant.log 2>&1"
 
 start_daemon () {
     /bin/sh -c "$PYTHON $HASS $FLAGS $REDIRECT;"
+}
+
+update_hass () {
+    /bin/sh -c "$PIP3 install --upgrade homeassistant"
 }
 
 stop_daemon () {
@@ -76,6 +81,17 @@ case $1 in
             exit $?
         fi
         ;;
+    update)
+	if daemon_status; then
+	    echo Stopping ${QPKG_NAME} ...
+            stop_daemon
+	    echo Updating ${QPKG_NAME} ...
+	    update_hass
+	    echo Starting ${QPKG_NAME} ...
+            start_daemon
+            exit $?
+	fi
+	;;
     status)
         if daemon_status; then
             echo ${QPKG_NAME} is running
@@ -90,7 +106,7 @@ case $1 in
         exit 0
         ;;
     *)
-        echo "Usage: $N {start|stop|restart|log|status}" >&2
+        echo "Usage: $N {start|stop|restart|update|log|status}" >&2
         exit 1
     ;;
 esac
