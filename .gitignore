@@ -1,2 +1,4 @@
 
-secrets.yalm
+.idea/
+conf/secrets.yaml
+*.iml

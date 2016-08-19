@@ -88,6 +88,6 @@ switch:
   username: !secret transmission_user
   password: !secret transmission_pw
 
-group: !include group.yalm
+group: !include group.yaml
 
 automation: !include automation.yaml
