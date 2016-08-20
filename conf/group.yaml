@@ -15,8 +15,8 @@ devicestab:
 family:
   name: Familia
   entities:
-    - device_tracker.sanmi_sonyz3
-    - device_tracker.eli_sonyz3
+    - device_tracker.sanmi_david
+    - device_tracker.eli_eli
 weather:
   name: Clima
   entities:
