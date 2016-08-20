@@ -22,6 +22,11 @@ update_hass () {
     /bin/sh -c "$PIP3 install --upgrade homeassistant"
 }
 
+install_mysql () {
+    export PATH=$PATH:/usr/local/mysql/bin
+    /bin/sh -c "$PIP3 install mysqlclient"
+}
+
 stop_daemon () {
     kill `cat ${PID_FILE}`
     wait_for_status 1 20 || kill -9 `cat ${PID_FILE}`
@@ -85,12 +90,19 @@ case $1 in
     update)
 	if daemon_status; then
 	    echo Stopping ${QPKG_NAME} ...
-            stop_daemon
+        stop_daemon
 	    echo Updating ${QPKG_NAME} ...
 	    update_hass
 	    echo Starting ${QPKG_NAME} ...
-            start_daemon
-            exit $?
+        start_daemon
+        exit $?
+	fi
+	;;
+	install-mysql)
+	if daemon_status; then
+	    echo Installing mysql connector ...
+	    install_mysql
+	    exit $?
 	fi
 	;;
     status)
@@ -107,7 +119,7 @@ case $1 in
         exit 0
         ;;
     *)
-        echo "Usage: $N {start|stop|restart|update|log|status}" >&2
+        echo "Usage: $N {start|stop|restart|update|install-mysql|log|status}" >&2
         exit 1
     ;;
 esac
