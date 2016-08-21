@@ -1,18 +1,37 @@
-- alias: We are at home
+- alias: Transmission tortoise mode (at home)
   trigger:
     platform: state
     entity_id: group.family
     state: 'home'
+  condition: 
+    condition: time
+    after: '08:01:00'
+    before: '23:29:00'
   action:
     # alternative speed on (low speed)
     service: switch.turn_on
     entity_id: switch.transmission
 
-- alias: We are not at home
+- alias: Transmission full mode
+  trigger:
+    platform: time
+    hours: 23
+    minutes: 30
+    seconds: 0
+  action:
+    # alternative speed off (hi speed)
+    service: switch.turn_off
+    entity_id: switch.transmission
+
+- alias: Transmission full mode (not at home)
   trigger:
     platform: state
     entity_id: group.family
     state: 'not_home'
+  condition:
+    condition: time
+    after: '08:01:00'
+    before: '23:29:00'
   action:
     # alternative speed off (hi speed)
     service: switch.turn_off
