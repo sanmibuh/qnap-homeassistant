@@ -6,10 +6,25 @@ sensor.yr_temperature:
   friendly_name: Temperatura
 sensor.yr_condition:
   friendly_name: Lluvia
+  icon: mdi:weather-rainy
 sensor.yr_humidity:
   friendly_name: Humedad
+  icon: mdi:water-percent
 sensor.yr_wind_speed:
   friendly_name: Viento
+  icon: mdi:weather-windy
+sensor.transmission_status:
+  friendly_name: Estado
+  icon: mdi:information-outline
+sensor.transmission_down_speed:
+  friendly_name: Velocidad descarga
+  icon: mdi:cloud-download
+sensor.transmission_up_speed:
+  friendly_name: Velocidad subida
+  icon: mdi:cloud-upload
+switch.transmission:
+  friendly_name: Modo tortuga
+  icon: mdi:transfer
 zone.school:
   friendly_name: Colegio
 zone.work_d:

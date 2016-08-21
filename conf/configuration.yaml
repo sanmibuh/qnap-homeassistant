@@ -36,6 +36,9 @@ http:
   ssl_certificate: ssl/SSLcertificate.crt
   ssl_key: ssl/SSLprivatekey.key
 
+logger:
+  default: warn
+
 # Checks for available updates
 updater:
 
@@ -50,10 +53,10 @@ recorder:
   db_url: !secret db_url
 
 # Enables support for tracking state changes over time.
-history:
+#history:
 
 # View all events in a logbook
-logbook:
+#logbook:
 
 # Track the sun
 sun:
@@ -67,6 +70,18 @@ sensor:
     - precipitation
     - windSpeed
     - humidity
+
+sensor 2:
+  platform: transmission
+  host: !secret transmission_host
+  port: 9091
+  name: Transmission
+  username: !secret transmission_user
+  password: !secret transmission_pw
+  monitored_variables:
+    - 'current_status'
+    - 'download_speed'
+    - 'upload_speed'
 
 media_player:
   platform: pioneer

@@ -1,25 +1,11 @@
-sanmi_david:
+sanmi_phone:
   name: David
   mac: !secret david_mac
   picture: !secret david_picture
   track: yes
   hide_if_away: no
 
-sanmi_sonyz3:
-  name: David
-  mac: !secret david_mac
-  picture: !secret david_picture
-  track: yes
-  hide_if_away: no
-
-eli_eli:
-  name: Eli
-  mac: !secret eli_mac
-  picture: !secret eli_picture
-  track: yes
-  hide_if_away: no
-
-eli_sonyz3:
+eli_phone:
   name: Eli
   mac: !secret eli_mac
   picture: !secret eli_picture

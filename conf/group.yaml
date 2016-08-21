@@ -10,13 +10,14 @@ devicestab:
   view: yes
   entities:
     - media_player.pioneer
-    - switch.transmission
+    - group.transmission
 
 family:
   name: Familia
   entities:
-    - device_tracker.sanmi_david
-    - device_tracker.eli_eli
+    - device_tracker.sanmi_phone
+    - device_tracker.eli_phone
+
 weather:
   name: Clima
   entities:
@@ -26,3 +27,11 @@ weather:
     - sensor.yr_condition
     - sensor.yr_humidity
     - sensor.yr_wind_speed
+
+transmission:
+  name: Transmission
+  entities: 
+    - sensor.transmission_status
+    - sensor.transmission_up_speed
+    - sensor.transmission_down_speed
+    - switch.transmission
