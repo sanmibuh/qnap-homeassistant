@@ -95,6 +95,7 @@
 #CMD_PKG_TOOL=
 #
 PYTHON3_BIN="$SYS_QPKG_INSTALL_PATH/Python3/python3/bin"
+CONFIG_DIR="/conf"
 ######################################################################
 # All package specific functions shall call 'err_log MSG' if an error
 # is detected that shall terminate the installation.
@@ -108,7 +109,7 @@ PYTHON3_BIN="$SYS_QPKG_INSTALL_PATH/Python3/python3/bin"
 #}"
 #
 PKG_MAIN_REMOVE="{
-	sh -c "cd $PYTHON3_BIN && ./pip3 uninstall homeassistant"
+	/bin/sh -c "cd $PYTHON3_BIN && ./pip3 uninstall homeassistant"
 }"
 #
 #PKG_POST_REMOVE="{
@@ -134,15 +135,17 @@ PKG_MAIN_REMOVE="{
 ######################################################################
 pkg_pre_install(){
 	echo "Upgrading pip3"
-	sh -c "cd $PYTHON3_BIN && ./pip3 install --upgrade pip"
+	/bin/sh -c "cd $PYTHON3_BIN && ./pip3 install --upgrade pip"
 	echo "pip3 upgraded"
 }
 #
 pkg_install(){
 	echo "Installing homeassistant..."
-	sh -c "cd $PYTHON3_BIN && ./pip3 install homeassistant"
+	/bin/sh -c "cd $PYTHON3_BIN && ./pip3 install homeassistant"
 	echo "homeassistant installed"
 }
 #
-#pkg_post_install(){
-#}
+pkg_post_install(){
+    echo "Creating config dir ($SYS_QPKG_DIR$CONFIG_DIR) ..."
+    $CMD_MKDIR "$SYS_QPKG_DIR$CONFIG_DIR"
+}
